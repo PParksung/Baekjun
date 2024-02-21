@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class solve {
+public class practice {
     public static void main(String[] args) {
         
         Scanner sc = new Scanner(System.in);
@@ -26,9 +26,7 @@ public class solve {
                     System.out.println();              
                 }
                 System.out.println();
-
             }
-
         }
         else{
             System.out.println("");
