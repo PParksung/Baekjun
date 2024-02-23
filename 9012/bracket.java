@@ -1,45 +1,42 @@
 import java.util.*;
 public class bracket {
     public static void main(String[] args) {
-        
+
         Scanner sc = new Scanner(System.in);
+        String input = sc.next();
+        sc.close();
 
-        int num = sc.nextInt();
+        Stack <Character> stack = new Stack();
+        boolean isValid = true;
 
-        for(int i=0; i<num;i++){
-            System.out.println(solve(sc.next()));
-        }
-    }
 
-    public static String solve(String s){
-
-        Stack<Character> stack = new Stack<>();
-
-        for(int i=0; i<s.length();i++){
-
-            char c = s.charAt(i);
+        for(char c : input.toCharArray()){
 
             if(c=='('){
                 stack.push(c);
             }
-            else if(stack.empty()){
-                return "NO";
-            }
-            else{
+            else if(c==')'){
+                if(stack.isEmpty()){
+                    isValid = false;
+                    break;
+                }
                 stack.pop();
-            }
 
+            }
 
         }
-        
-        if(stack.empty()){
-            return "YES";
+
+        if(!stack.isEmpty()){
+            isValid = false;
+        }
+
+        if(isValid){
+            System.out.println("Valid parentheses");
         }
         else{
-            return "NO";
+            System.out.println("Invalid parentheses");
         }
+
     }
-
-
 
 }
