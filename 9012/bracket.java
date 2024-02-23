@@ -4,42 +4,42 @@ public class bracket {
 
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-
         for(int i=0; i<n; i++){
-            String input = sc.next();
-
-            Stack <Character> stack = new Stack();
-            boolean isValid = true;
-
-            for(char c : input.toCharArray()){
-
-                if(c=='('){
-                    stack.push(c);
-                }
-                else if(c==')'){
-                    if(stack.isEmpty()){
-                        isValid = false;
-                        break;
-                }
-
-                stack.pop();
-
-            }
-
-            if(!stack.isEmpty()){
-                isValid = false;
-            }
-    
-            if(isValid){
-                System.out.println("YES");
+            String input = sc.nextLine();
+            String result = "";
+            if(isValidParentheses(input)){
+                result = "YES";
             }
             else{
-                System.out.println("NO");
+                result = "NO";
             }
-
+            System.out.println(result);
         }
+        sc.close();
+    }
+    public static boolean isValidParentheses(String input){
+        
+        Stack <Character> stack = new Stack<>();
+        
+        for(char c : input.toCharArray()){
+            if(c=='('){
+                stack.push(c);
+            }
+            else if(c==')'& stack.isEmpty()){
+                return false;
+            }
+            else{
+                stack.pop();
+            }
+        }
+
+        if(stack.isEmpty()){
+            return true;
+        }
+        else{
+            return false;
         }
 
     }
-
 }
+
