@@ -3,38 +3,41 @@ public class bracket {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        String input = sc.next();
-        sc.close();
+        int n = sc.nextInt();
 
-        Stack <Character> stack = new Stack();
-        boolean isValid = true;
+        for(int i=0; i<n; i++){
+            String input = sc.next();
 
+            Stack <Character> stack = new Stack();
+            boolean isValid = true;
 
-        for(char c : input.toCharArray()){
+            for(char c : input.toCharArray()){
 
-            if(c=='('){
-                stack.push(c);
-            }
-            else if(c==')'){
-                if(stack.isEmpty()){
-                    isValid = false;
-                    break;
+                if(c=='('){
+                    stack.push(c);
                 }
+                else if(c==')'){
+                    if(stack.isEmpty()){
+                        isValid = false;
+                        break;
+                }
+
                 stack.pop();
 
             }
 
-        }
+            if(!stack.isEmpty()){
+                isValid = false;
+            }
+    
+            if(isValid){
+                System.out.println("YES");
+            }
+            else{
+                System.out.println("NO");
+            }
 
-        if(!stack.isEmpty()){
-            isValid = false;
         }
-
-        if(isValid){
-            System.out.println("Valid parentheses");
-        }
-        else{
-            System.out.println("Invalid parentheses");
         }
 
     }
