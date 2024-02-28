@@ -12,17 +12,17 @@ public class PracticeQueue {
         int n = Integer.parseInt(br.readLine()); 
         Queue <Integer> queue = new LinkedList<>();
         StringBuilder sb = new StringBuilder();
-
+        int last = 0;
 
         for(int i=0; i<n; i++){
-            String input = br.readLine();
-            StringTokenizer st = new StringTokenizer(input);
+            StringTokenizer st = new StringTokenizer(br.readLine());
             String command = st.nextToken(); //push,pop etc
             
             switch(command){
                 case "push":
-                    queue.offer(Integer.parseInt(st.nextToken()));
-                break;
+                    last = Integer.parseInt(st.nextToken());
+                    queue.offer(last);
+                    break;
 
                 case "pop":
                     if(!queue.isEmpty()){
@@ -39,7 +39,7 @@ public class PracticeQueue {
 
                 case "empty":
                     if(queue.isEmpty()){
-                        sb.append("-1").append("\n");
+                        sb.append("1").append("\n");
                     }
                     else{
                         sb.append("0").append("\n");
@@ -57,10 +57,7 @@ public class PracticeQueue {
                 
                 case "back":
                     if(!queue.isEmpty()){
-                        for(int j=0; j<n-1; j++){
-                        queue.remove();
-                        }
-                        sb.append(queue.peek()).append("\n");
+                        sb.append(last).append("\n");
                     }
                     else{
                         sb.append("-1").append("\n");
